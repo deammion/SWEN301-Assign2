@@ -2,6 +2,9 @@ package nz.ac.wgtn.swen301.assignment2;
 
 import static org.junit.Assert.assertTrue;
 
+import org.apache.log4j.Appender;
+import org.apache.log4j.Logger;
+import org.apache.log4j.spi.LoggingEvent;
 import org.junit.Test;
 
 /**
@@ -13,8 +16,10 @@ public class JSONLayoutTest
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void Test_01() {
+        new JSONLayout();
+        List<LoggingEvent> log = ;
+        assert()
+
     }
 }
