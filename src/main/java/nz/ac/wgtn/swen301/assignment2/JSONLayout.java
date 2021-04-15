@@ -10,10 +10,10 @@ public class JSONLayout extends Layout {
     public String format(LoggingEvent loggingEvent) {
         JSONObject json = new JSONObject();
         json.put("Logger", loggingEvent.getLoggerName());
-        json.put("level", loggingEvent.getLevel().toString());
+        json.put("Level", loggingEvent.getLevel().toString());
         json.put("Time", loggingEvent.getTimeStamp());
-        json.put("thread", loggingEvent.getThreadName());
-        json.put("message", loggingEvent.getMessage());
+        json.put("Thread", loggingEvent.getThreadName());
+        json.put("Message", loggingEvent.getMessage());
 
         return json.toString();
     }
