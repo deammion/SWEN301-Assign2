@@ -1,21 +1,23 @@
 package nz.ac.wgtn.swen301.assignment2;
+import com.google.gson.Gson;
 import org.apache.log4j.*;
 import org.apache.log4j.spi.LoggingEvent;
-import org.json.JSONObject;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class JSONLayout extends Layout {
 
     @Override
     public String format(LoggingEvent loggingEvent) {
-        JSONObject json = new JSONObject();
-        json.put("Logger", loggingEvent.getLoggerName());
-        json.put("Level", loggingEvent.getLevel().toString());
-        json.put("Time", loggingEvent.getTimeStamp());
-        json.put("Thread", loggingEvent.getThreadName());
-        json.put("Message", loggingEvent.getMessage());
+        Map<String, Object> logMap = new LinkedHashMap<>();
+        logMap.put("Logger", loggingEvent.getLoggerName());
+        logMap.put("Level", loggingEvent.getLevel().toString());
+        logMap.put("Time", loggingEvent.getTimeStamp());
+        logMap.put("Thread", loggingEvent.getThreadName());
+        logMap.put("Message", loggingEvent.getMessage());
 
-        return json.toString();
+        return new Gson().toJson(logMap);
     }
 
     @Override
@@ -25,7 +27,7 @@ public class JSONLayout extends Layout {
 
     @Override
     public void activateOptions() {
-
+        //no Options to activate
     }
 
     public static void main(String[] args) {

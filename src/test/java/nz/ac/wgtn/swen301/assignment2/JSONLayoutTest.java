@@ -1,11 +1,12 @@
 package nz.ac.wgtn.swen301.assignment2;
 
+import com.google.gson.Gson;
 import org.apache.log4j.*;
-import org.json.JSONObject;
 import org.junit.Test;
 
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,13 +27,12 @@ public class JSONLayoutTest
         logger.addAppender(appender);
         logger.warn("WARN test");
 
-        String string = writer.toString();
-        JSONObject jsonObject = new JSONObject(string);
+        Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), jsonObject.get("Logger"));
-        assertEquals("WARN", jsonObject.get("Level"));
-        assertEquals("WARN test", jsonObject.get("Message"));
-        assertEquals("main", jsonObject.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("Logger"));
+        assertEquals("WARN", logMap.get("Level"));
+        assertEquals("WARN test", logMap.get("Message"));
+        assertEquals("main", logMap.get("Thread"));
     }
 
     /**
@@ -46,13 +46,12 @@ public class JSONLayoutTest
         logger.addAppender(appender);
         logger.error("ERROR test");
 
-        String string = writer.toString();
-        JSONObject jsonObject = new JSONObject(string);
+        Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), jsonObject.get("Logger"));
-        assertEquals("ERROR", jsonObject.get("Level"));
-        assertEquals("ERROR test", jsonObject.get("Message"));
-        assertEquals("main", jsonObject.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("Logger"));
+        assertEquals("ERROR", logMap.get("Level"));
+        assertEquals("ERROR test", logMap.get("Message"));
+        assertEquals("main", logMap.get("Thread"));
     }
 
     /**
@@ -66,13 +65,12 @@ public class JSONLayoutTest
         logger.addAppender(appender);
         logger.debug("DEBUG test");
 
-        String string = writer.toString();
-        JSONObject jsonObject = new JSONObject(string);
+        Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), jsonObject.get("Logger"));
-        assertEquals("DEBUG", jsonObject.get("Level"));
-        assertEquals("DEBUG test", jsonObject.get("Message"));
-        assertEquals("main", jsonObject.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("Logger"));
+        assertEquals("DEBUG", logMap.get("Level"));
+        assertEquals("DEBUG test", logMap.get("Message"));
+        assertEquals("main", logMap.get("Thread"));
     }
 
     /**
@@ -86,13 +84,12 @@ public class JSONLayoutTest
         logger.addAppender(appender);
         logger.fatal("FATAL test");
 
-        String string = writer.toString();
-        JSONObject jsonObject = new JSONObject(string);
+        Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), jsonObject.get("Logger"));
-        assertEquals("FATAL", jsonObject.get("Level"));
-        assertEquals("FATAL test", jsonObject.get("Message"));
-        assertEquals("main", jsonObject.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("Logger"));
+        assertEquals("FATAL", logMap.get("Level"));
+        assertEquals("FATAL test", logMap.get("Message"));
+        assertEquals("main", logMap.get("Thread"));
     }
 
     /**
@@ -106,12 +103,11 @@ public class JSONLayoutTest
         logger.addAppender(appender);
         logger.info("INFO test");
 
-        String string = writer.toString();
-        JSONObject jsonObject = new JSONObject(string);
+        Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), jsonObject.get("Logger"));
-        assertEquals("INFO", jsonObject.get("Level"));
-        assertEquals("INFO test", jsonObject.get("Message"));
-        assertEquals("main", jsonObject.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("Logger"));
+        assertEquals("INFO", logMap.get("Level"));
+        assertEquals("INFO test", logMap.get("Message"));
+        assertEquals("main", logMap.get("Thread"));
     }
 }
