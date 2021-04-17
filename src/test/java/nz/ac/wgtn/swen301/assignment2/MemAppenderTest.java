@@ -3,22 +3,11 @@ package nz.ac.wgtn.swen301.assignment2;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import org.apache.log4j.Appender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.log4j.WriterAppender;
-import org.apache.log4j.spi.LoggingEvent;
 import org.junit.Test;
 
 import java.io.*;
-import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
@@ -98,6 +87,9 @@ public class MemAppenderTest {
         assertEquals ("MemAppender_03", appender.getName());
     }
 
+    /**
+     * Tests getLogs()
+     */
     @Test
     public void Test_04() {
         Logger logger = Logger.getLogger("Test_04");
@@ -147,5 +139,13 @@ public class MemAppenderTest {
         } catch (IOException e) {
             fail("Invalid filepath");
         }
+    }
+
+    /**
+     * test requiresLayout()
+     */
+    @Test
+    public void Test_06() {
+        assertEquals(new MemAppender("Test_06").requiresLayout(), false);
     }
 }
