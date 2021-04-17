@@ -1,0 +1,37 @@
+[
+  {
+    "Logger": "Test_06",
+    "Level": "WARN",
+    "Time": 1618632524158,
+    "Thread": "main",
+    "Message": "WARN"
+  },
+  {
+    "Logger": "Test_06",
+    "Level": "INFO",
+    "Time": 1618632524158,
+    "Thread": "main",
+    "Message": "INFO"
+  },
+  {
+    "Logger": "Test_06",
+    "Level": "FATAL",
+    "Time": 1618632524158,
+    "Thread": "main",
+    "Message": "FATAL"
+  },
+  {
+    "Logger": "Test_06",
+    "Level": "ERROR",
+    "Time": 1618632524158,
+    "Thread": "main",
+    "Message": "ERROR"
+  },
+  {
+    "Logger": "Test_06",
+    "Level": "DEBUG",
+    "Time": 1618632524158,
+    "Thread": "main",
+    "Message": "DEBUG"
+  }
+]
