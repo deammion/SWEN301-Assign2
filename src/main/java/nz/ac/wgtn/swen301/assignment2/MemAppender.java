@@ -67,11 +67,11 @@ public class MemAppender extends AppenderSkeleton implements MemAppenderMBean {
         PatternLayout patternLayout = new PatternLayout();
         patternLayout.setConversionPattern(PatternLayout.DEFAULT_CONVERSION_PATTERN);
 
-        List<String> logStrings = new LinkedList<>();
-        for (LoggingEvent loggingEvent : eventLog) {
-            logStrings.add(patternLayout.format(loggingEvent));
+        String[] logStrings = new String[eventLog.size()];
+        for (int i = 0; i < eventLog.size(); i++) {
+            logStrings[i] = patternLayout.format(eventLog.get(i));
         }
-        return logStrings.toArray(new String[0]);
+        return logStrings;
     }
 
     public long getLogCount() {

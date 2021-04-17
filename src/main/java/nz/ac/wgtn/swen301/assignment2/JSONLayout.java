@@ -29,16 +29,4 @@ public class JSONLayout extends Layout {
     public void activateOptions() {
         //no Options to activate
     }
-
-    public static void main(String[] args) {
-        BasicConfigurator.configure();
-        Logger logger = Logger.getLogger(JSONLayout.class);
-        Appender appender = new ConsoleAppender(new JSONLayout());
-        logger.addAppender(appender);
-        logger.setLevel(Level.INFO);
-        logger.warn("This is WARN");
-        logger.debug("This is DEBUG");
-        logger.error("This is ERROR");
-        logger.fatal("This is FATAL");
-    }
 }

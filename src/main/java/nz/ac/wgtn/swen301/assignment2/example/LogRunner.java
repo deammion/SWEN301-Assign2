@@ -19,7 +19,6 @@ public class LogRunner {
         }
         Logger logger = Logger.getLogger("Log");
         MemAppender appender = new MemAppender("LogRunner");
-        //Appender appender = new ConsoleAppender(new JSONLayout());
         appender.setLayout(new JSONLayout());
         logger.addAppender(appender);
         logger.setLevel(Level.INFO);
