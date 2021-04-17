@@ -21,8 +21,6 @@ public class MemAppender extends AppenderSkeleton implements MemAppenderMBean {
 
     List<LoggingEvent> eventLog = new LinkedList<>();
 
-    private String name;
-
     long discardedLogCount = 0;
     long logCount = 0;
 
