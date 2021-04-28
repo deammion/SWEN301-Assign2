@@ -13,7 +13,11 @@ public class LogRunner {
 
     private static int count = 0;
 
+    /**
+     * Generate a random log event
+     */
     public static void generateLogEvent() {
+        //Exits once count equals 120 i.e. after 2 minutes
         if (count >= 120) {
             System.exit(0);
         }
@@ -21,8 +25,9 @@ public class LogRunner {
         MemAppender appender = new MemAppender("LogRunner");
         appender.setLayout(new JSONLayout());
         logger.addAppender(appender);
+        //set logger to lowest level
         logger.setLevel(Level.DEBUG);
-
+        // Create random Log event
         Random r = new Random();
         int random = r.nextInt(5);
         if (random == 0) {
@@ -48,6 +53,7 @@ public class LogRunner {
 
         Runnable logRunnable = LogRunner::generateLogEvent;
         ScheduledExecutorService logExec = Executors.newScheduledThreadPool(1);
+        //run  generate log event every second
         logExec.scheduleAtFixedRate(logRunnable, 0, 1, TimeUnit.SECONDS);
 
     }

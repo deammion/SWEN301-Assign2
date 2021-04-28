@@ -16,11 +16,14 @@ import java.util.List;
 public class MemAppender extends AppenderSkeleton implements MemAppenderMBean {
 
     private static final long maxSize = 1000;
+
+    //local (to project) directory to store files
     private static final String dir = "logFiles/";
     private static final String fileSuffix = ".json";
 
     List<LoggingEvent> eventLog = new LinkedList<>();
 
+    //Longs used to track log count and discarded log count
     long discardedLogCount = 0;
     long logCount = 0;
 
@@ -28,6 +31,10 @@ public class MemAppender extends AppenderSkeleton implements MemAppenderMBean {
         setName(name);
     }
 
+    /**
+     * Add log event
+     * @param loggingEvent - log event to add
+     */
     @Override
     protected void append(LoggingEvent loggingEvent) {
         eventLog.add(loggingEvent);
@@ -37,24 +44,42 @@ public class MemAppender extends AppenderSkeleton implements MemAppenderMBean {
         discardLog();
     }
 
+    /**
+     * Close MemAppender
+     */
     @Override
     public void close() {
         //nothing to close
     }
 
+    /**
+     *
+     * @return boolean - True if requires layout
+     */
     @Override
     public boolean requiresLayout() {
         return false;
     }
 
+    /**
+     * Set MemAppender Name
+     * @param name - String
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Returns all stored logs
+     * @return List - list of all stored log events (unmodifiable)
+     */
     public List<LoggingEvent> getCurrentLogs() {
         return Collections.unmodifiableList(eventLog);
     }
 
+    /**
+     * Discards the oldest log
+     */
     public void discardLog(){
         while (eventLog.size() > maxSize) {
             eventLog.remove(0);
@@ -62,6 +87,10 @@ public class MemAppender extends AppenderSkeleton implements MemAppenderMBean {
         }
     }
 
+    /**
+     * Gets
+     * @return String Array - Array of Logs formatted as strings
+     */
     @Override
     public String[] getLogs() {
         PatternLayout patternLayout = new PatternLayout();
@@ -74,14 +103,27 @@ public class MemAppender extends AppenderSkeleton implements MemAppenderMBean {
         return logStrings;
     }
 
+    /**
+     * Return the current log count
+     * @return long - current logs stored
+     */
     public long getLogCount() {
         return logCount;
     }
 
+    /**
+     * Return the amount of discarded logs
+     * @return long - discarded log count
+     */
     public long getDiscardedLogCount() {
         return discardedLogCount;
     }
 
+    /**
+     * Exports the current stored logs to a Json file
+     * @param filename - name to store logs under
+     * @throws IOException
+     */
     public void exportToJSON(String filename) throws IOException {
         if (layout instanceof JSONLayout) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
