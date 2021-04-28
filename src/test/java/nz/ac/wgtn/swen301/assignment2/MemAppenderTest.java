@@ -135,7 +135,7 @@ public class MemAppenderTest {
             JsonArray jsonArray = gson.fromJson(fileString, JsonArray.class);
             JsonObject jsonObject = jsonArray.get(0).getAsJsonObject();
 
-            assertEquals(jsonObject.get("Message").getAsString(),appender.getCurrentLogs().get(0).getMessage());
+            assertEquals(jsonObject.get("message").getAsString(),appender.getCurrentLogs().get(0).getMessage());
         } catch (IOException e) {
             fail("Invalid filepath");
         }

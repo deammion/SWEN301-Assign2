@@ -14,13 +14,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MemAppender extends AppenderSkeleton implements MemAppenderMBean {
-
+   //Max allowable amount of stored log files
     private static final long maxSize = 1000;
 
     //local (to project) directory to store files
     private static final String dir = "logFiles/";
     private static final String fileSuffix = ".json";
 
+    //LinkList used as each element is linked to those adjacent to them
     List<LoggingEvent> eventLog = new LinkedList<>();
 
     //Longs used to track log count and discarded log count

@@ -29,10 +29,10 @@ public class JSONLayoutTest
 
         Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), logMap.get("Logger"));
-        assertEquals("WARN", logMap.get("Level"));
-        assertEquals("WARN test", logMap.get("Message"));
-        assertEquals("main", logMap.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("logger"));
+        assertEquals("WARN", logMap.get("level"));
+        assertEquals("WARN test", logMap.get("message"));
+        assertEquals("main", logMap.get("thread"));
     }
 
     /**
@@ -48,10 +48,10 @@ public class JSONLayoutTest
 
         Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), logMap.get("Logger"));
-        assertEquals("ERROR", logMap.get("Level"));
-        assertEquals("ERROR test", logMap.get("Message"));
-        assertEquals("main", logMap.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("logger"));
+        assertEquals("ERROR", logMap.get("level"));
+        assertEquals("ERROR test", logMap.get("message"));
+        assertEquals("main", logMap.get("thread"));
     }
 
     /**
@@ -67,10 +67,10 @@ public class JSONLayoutTest
 
         Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), logMap.get("Logger"));
-        assertEquals("DEBUG", logMap.get("Level"));
-        assertEquals("DEBUG test", logMap.get("Message"));
-        assertEquals("main", logMap.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("logger"));
+        assertEquals("DEBUG", logMap.get("level"));
+        assertEquals("DEBUG test", logMap.get("message"));
+        assertEquals("main", logMap.get("thread"));
     }
 
     /**
@@ -86,10 +86,10 @@ public class JSONLayoutTest
 
         Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), logMap.get("Logger"));
-        assertEquals("FATAL", logMap.get("Level"));
-        assertEquals("FATAL test", logMap.get("Message"));
-        assertEquals("main", logMap.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("logger"));
+        assertEquals("FATAL", logMap.get("level"));
+        assertEquals("FATAL test", logMap.get("message"));
+        assertEquals("main", logMap.get("thread"));
     }
 
     /**
@@ -105,9 +105,9 @@ public class JSONLayoutTest
 
         Map logMap = new Gson().fromJson(writer.toString(), Map.class);
 
-        assertEquals(logger.getName(), logMap.get("Logger"));
-        assertEquals("INFO", logMap.get("Level"));
-        assertEquals("INFO test", logMap.get("Message"));
-        assertEquals("main", logMap.get("Thread"));
+        assertEquals(logger.getName(), logMap.get("logger"));
+        assertEquals("INFO", logMap.get("level"));
+        assertEquals("INFO test", logMap.get("message"));
+        assertEquals("main", logMap.get("thread"));
     }
 }
