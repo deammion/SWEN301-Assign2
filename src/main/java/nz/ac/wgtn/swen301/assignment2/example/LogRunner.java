@@ -14,19 +14,19 @@ public class LogRunner {
     private static int count = 0;
 
     public static void generateLogEvent() {
-        if (count >= 2) {
+        if (count >= 120) {
             System.exit(0);
         }
         Logger logger = Logger.getLogger("Log");
         MemAppender appender = new MemAppender("LogRunner");
         appender.setLayout(new JSONLayout());
         logger.addAppender(appender);
-        logger.setLevel(Level.INFO);
+        logger.setLevel(Level.DEBUG);
 
         Random r = new Random();
         int random = r.nextInt(5);
         if (random == 0) {
-            logger.info("INFO");
+            logger.fatal("FATAL");
         }
         if (random == 1) {
             logger.warn("WARN");
@@ -38,7 +38,7 @@ public class LogRunner {
             logger.error("ERROR");
         }
         if (random == 4) {
-            logger.fatal("FATAL");
+            logger.info("INFO");
         }
         count++;
         System.out.println(appender.getCurrentLogs().toString());
@@ -48,7 +48,7 @@ public class LogRunner {
 
         Runnable logRunnable = LogRunner::generateLogEvent;
         ScheduledExecutorService logExec = Executors.newScheduledThreadPool(1);
-        logExec.scheduleAtFixedRate(logRunnable, 0, 1, TimeUnit.MINUTES);
+        logExec.scheduleAtFixedRate(logRunnable, 0, 1, TimeUnit.SECONDS);
 
     }
 }
